@@ -59,7 +59,15 @@ public class AddressBook {
 			System.out.println("Please enter valid First Name");
 			editContact();
 		}
-
 	}
 
+	public void delete() {
+		System.out.println("Enter First Name of Persion");
+		String editName = sc.nextLine();
+		if (editName.equals(contact.firstName)) {
+			System.out.println("you deleted " + contact.firstName + " data");
+
+			contact = null;
+		}
+	}
 }

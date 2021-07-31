@@ -17,7 +17,7 @@ public class AddressBookMain {
 
 		while (true) {
 			System.out.println("\nWelcome to Address Book System");
-			System.out.println("1. New Address Book \n2. Select Address Book \n3. Delete Address Book \n4. Search Contact Data \n5. Exit");
+			System.out.println("1. New Address Book \n2. Select Address Book \n3. Delete Address Book \n4. Search Contact Data \n5.View Contact Data \n6. Exit");
 			System.out.print("Enter Your choice: ");
 			int choice = sc.nextInt();
 			sc.nextLine();
@@ -52,6 +52,10 @@ public class AddressBookMain {
 				System.out.println("Welcome to the search option:");
 				addressBook.searchByOptions();
 			case 5:
+				System.out.println("Welcome to view By Option:");
+				addressBook.viewByOption(addressBookMap);
+				break;
+			case 6:
 				sc.close();// for closing the programme
 				return;
 			default:

@@ -1,0 +1,2 @@
+Family: Contacts [firstName=haresh, lastName=bathala, address=India, city=srikakulam, state=andhra, zipCode=532001, phoneNumber=81715243233, email=hareshbathala87@gmail.com
+friends:Contacts [firstName=ravindra, lastName=konna, address=India, city=srikakulam, state=banglore, zipCode=162233, phoneNumber=7165243162, email=konna@gmail.com

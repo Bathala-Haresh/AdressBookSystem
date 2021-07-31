@@ -6,6 +6,7 @@
 package AddressBook;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class AddressBook {
 	Contacts contact = new Contacts();
@@ -44,7 +45,6 @@ public class AddressBook {
 		contact.setZipCode(zipCode);
 		contact.setPhoneNumber(phoneNum);
 		contact.setEmail(email);
-		System.out.println(contact);
 	}
 
 	// ability to edit existing contact
@@ -70,4 +70,9 @@ public class AddressBook {
 			contact = null;
 		}
 	}
+	
+	public void showContact() {
+		System.out.println(contact.toString());
+	}
+
 }

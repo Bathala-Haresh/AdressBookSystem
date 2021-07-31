@@ -12,20 +12,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 
-public class AddressBook {
-	
+public class AddressBook
+{
+
 	public static final ArrayList<Contacts> contactList = new ArrayList<>();
 	public static Map<String, Contacts> nameHashMap = new HashMap<String, Contacts>();
 	public static Map<String, Contacts> cityHashMap = new HashMap<String, Contacts>();
 	public static Map<String, Contacts> stateHashMap = new HashMap<String, Contacts>();
-
 	static Scanner sc = new Scanner(System.in);
 	static AddressBook addressBook = new AddressBook();
 
-	public static boolean addContact(Contacts contact) {
+	//boolean method to check if already contact exists or not
+	public static boolean addContact(Contacts contact)
+	{
 		List<Contacts> checkByName = searchByName(contact.getFirstName());
 		for (Contacts equalName : checkByName) {
 			if (equalName.equals(contact))
@@ -40,7 +43,7 @@ public class AddressBook {
 
 	// method for search contact by name
 	public static List<Contacts> searchByName(String name) {// collection list of element
-		// stream and lambda for find filter given name from arraylist
+		// stream and lambda to find filter given name from arraylist
 		return contactList.stream().filter(person -> person.getFirstName().equalsIgnoreCase(name))
 				.collect(Collectors.toList());
 	}
@@ -112,6 +115,7 @@ public class AddressBook {
 
 	// method for adding details
 	public static Contacts readContact() {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter First Name: ");
 		String firstName = sc.nextLine();
@@ -136,6 +140,7 @@ public class AddressBook {
 
 	// method for show option for contacts
 	public void addressBookOptions(AddressBook addressBook) {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		while (true) {
 			System.out.println("\n-------------------------- Address Book Contact Option --------------------------");
@@ -151,7 +156,6 @@ public class AddressBook {
 			switch (choice) {
 			case 1:
 				if (addContact(readContact())) // call addcontact with passing method readcontact
-
 					System.out.println("Cotact Added Successfully....!");
 				else
 					System.out.println("Contact Already Exist....!");
@@ -276,12 +280,12 @@ public class AddressBook {
 		switch (choice) {
 		case 1:
 			Map<String, Long> countCity = contactList.stream()
-					.collect(Collectors.groupingBy(e-> e.getCity(), Collectors.counting()));
+			.collect(Collectors.groupingBy(e -> e.getCity(), Collectors.counting()));
 			System.out.println(countCity + "\n");
 			break;
 		case 2:
 			Map<String, Long> countState = contactList.stream()
-					.collect(Collectors.groupingBy(e -> e.getState(), Collectors.counting()));
+			.collect(Collectors.groupingBy(e -> e.getState(), Collectors.counting()));
 			System.out.println(countState + "\n");
 			break;
 		case 3:
@@ -307,7 +311,8 @@ public class AddressBook {
 			addressBook.sortBy(Contacts::getFirstName).forEach(System.out::println);
 			break;
 		case 2:
-			addressBook.sortBy(Contacts::getFirstName).forEach(System.out::println);
+			addressBook.sortBy(Contacts::getLastName).forEach(System.out::println);
+
 			break;
 		case 3:
 			addressBook.sortBy(Contacts::getCity).forEach(System.out::println);

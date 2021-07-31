@@ -98,4 +98,28 @@ public class Contacts {
 		this.email = email;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!(obj instanceof Contacts))
+			return false;
+
+		Contacts other = (Contacts) obj;
+		if (!(firstName.equalsIgnoreCase(other.getFirstName())))
+			return false;
+		if (!(lastName.equalsIgnoreCase(other.getLastName())))
+			return false;
+		if (!(address.equalsIgnoreCase(other.getAddress())))
+			return false;
+		if (!(city.equalsIgnoreCase(other.getCity())))
+			return false;
+		if (!state.equalsIgnoreCase(other.getState()))
+			return false;
+		if (!zipCode.equals(other.getZipCode()))
+			return false;
+		if (!(phoneNumber.equals(other.getPhoneNumber())))
+			return false;
+		return email.equals(other.getEmail());
+	}
 }

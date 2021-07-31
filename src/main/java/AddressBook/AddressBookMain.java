@@ -16,11 +16,8 @@ public class AddressBookMain {
 		Map<String, AddressBook> addressBookMap = new HashMap<String, AddressBook>();
 
 		while (true) {
-			System.out.println("\n--------------------------Welcome to Address Book System--------------------------");
-			System.out.println("1. New Address Book");
-			System.out.println("2. Select Address Book");
-			System.out.println("3. Delete Address Book");
-			System.out.println("4. Exit");
+			System.out.println("\nWelcome to Address Book System");
+			System.out.println("1. New Address Book \n2. Select Address Book \n3. Delete Address Book \n4. Search Contact Data \n5. Exit");
 			System.out.print("Enter Your choice: ");
 			int choice = sc.nextInt();
 			sc.nextLine();
@@ -52,6 +49,9 @@ public class AddressBookMain {
 				addressBookMap.remove(name);// delete hashmap using remove fun
 				break;
 			case 4:
+				System.out.println("Welcome to the search option:");
+				addressBook.searchByOptions();
+			case 5:
 				sc.close();// for closing the programme
 				return;
 			default:

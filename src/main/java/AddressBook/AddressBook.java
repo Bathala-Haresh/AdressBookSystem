@@ -45,32 +45,39 @@ public class AddressBook {
 				.collect(Collectors.toList());
 	}
 
+	// method for search contact by City
 	public static List<Contacts> searchByCity(String city) {
 		return contactList.stream().filter(person -> person.getCity().equalsIgnoreCase(city))
 				.collect(Collectors.toList());
 	}
 
+	// method for search contact by State
 	public static List<Contacts> searchByState(String state) {
 		return contactList.stream().filter(person -> person.getState().equalsIgnoreCase(state))
 				.collect(Collectors.toList());
 	}
 
+	// method for view contact by name
 	public static void viewByName(Map<String, Contacts> nameHashMap) {
 		nameHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "=" + e.getValue().toString()));
 	}
 
+	// method for view contact by city
 	public static void viewByCity(Map<String, Contacts> cityHashMap) {
 		cityHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "=" + e.getValue().toString()));
 	}
 
+	// method for view contact by State
 	public static void viewByState(Map<String, Contacts> stateHashMap) {
 		stateHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "=" + e.getValue().toString()));
 	}
 
+	// method for sort contact by name, city, state
 	public List<Contacts> sortBy(Function<? super Contacts, ? extends String> key) {
 		return contactList.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
 	}
 
+	// method for sort contact by zip
 	public List<Contacts> sortByZip(Function<? super Contacts, ? extends Long> key) {
 		return contactList.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
 	}
@@ -269,7 +276,7 @@ public class AddressBook {
 		switch (choice) {
 		case 1:
 			Map<String, Long> countCity = contactList.stream()
-					.collect(Collectors.groupingBy(e -> e.getCity(), Collectors.counting()));
+					.collect(Collectors.groupingBy(e-> e.getCity(), Collectors.counting()));
 			System.out.println(countCity + "\n");
 			break;
 		case 2:
@@ -300,7 +307,7 @@ public class AddressBook {
 			addressBook.sortBy(Contacts::getFirstName).forEach(System.out::println);
 			break;
 		case 2:
-			addressBook.sortBy(Contacts::getLastName).forEach(System.out::println);
+			addressBook.sortBy(Contacts::getFirstName).forEach(System.out::println);
 			break;
 		case 3:
 			addressBook.sortBy(Contacts::getCity).forEach(System.out::println);

@@ -14,11 +14,15 @@ public class AddressBookMain {
 		Scanner sc = new Scanner(System.in);
 		AddressBook addressBook = new AddressBook();
 		Map<String, AddressBook> addressBookMap = new HashMap<String, AddressBook>();
-
 		while (true) {
-			System.out.println("\nWelcome to Address Book System");
-			System.out.println("1. New Address Book \n2. Select Address Book \n3. Delete Address Book \n4. "
-					+ "Search Contact Data \n5.View Contact Data \n6.Count Contacts \n7. Exit");
+			System.out.println("\n--------------------------Welcome to Address Book System--------------------------");
+			System.out.println("1. New Address Book");
+			System.out.println("2. Select Address Book");
+			System.out.println("3. Delete Address Book");
+			System.out.println("4. Search Contact Data");
+			System.out.println("5. View Contact Data");
+			System.out.println("6. Count Contacts ");
+			System.out.println("7. Exit");
 			System.out.print("Enter Your choice: ");
 			int choice = sc.nextInt();
 			sc.nextLine();
@@ -45,6 +49,12 @@ public class AddressBookMain {
 				addressBook.addressBookOptions(addressBookMap.get(name));// call method with passing address book name
 				break;
 			case 3:
+				System.out.println("List of available Address Book : ");
+				Set keysit = addressBookMap.keySet();// retrived keys from hashmap to show addressbooklist
+				Iterator it = keysit.iterator();
+				while (it.hasNext()) {
+					System.out.println(it.next());
+				}
 				System.out.println("Enter Address Book name to be delete: ");
 				name = sc.nextLine();
 				addressBookMap.remove(name);// delete hashmap using remove fun
@@ -52,6 +62,7 @@ public class AddressBookMain {
 			case 4:
 				System.out.println("Welcome to the search option:");
 				addressBook.searchByOptions();
+				break;
 			case 5:
 				System.out.println("Welcome to view By Option:");
 				addressBook.viewByOption(addressBookMap);
@@ -69,5 +80,4 @@ public class AddressBookMain {
 			}
 		}
 	}
-
 }

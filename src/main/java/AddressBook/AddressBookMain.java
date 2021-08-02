@@ -23,9 +23,7 @@ public class AddressBookMain {
 			System.out.println("4. Search Contact Data");
 			System.out.println("5. View Contact Data");
 			System.out.println("6. Count Contacts ");
-			System.out.println("7. Write data");
-			System.out.println("8. Read data");
-			System.out.println("9. Exit");
+			System.out.println("7. Exit");
 			System.out.print("Enter Your choice: "); 
 			int choice = sc.nextInt();
 			sc.nextLine();
@@ -34,7 +32,7 @@ public class AddressBookMain {
 				System.out.println("Enter Name of new Address Book: ");
 				String bookName = sc.next();
 				sc.nextLine();
-				addressBookMap.put(bookName, new AddressBook());// adding bookname as a key and vlue is allocating
+				addressBookMap.put(bookName, new AddressBook());// adding bookname as a key and value is allocating
 				// memory for addressbook obj
 				addressBook.addressBookOptions(addressBookMap.get(bookName));// call addressbook option method with
 				// passing key of hashmap
@@ -75,17 +73,6 @@ public class AddressBookMain {
 				addressBook.countByOption();
 				break;
 			case 7:
-				// System.out.println("Contact Details ");
-
-				AddressBookFileIO addressBookFileIO = new AddressBookFileIO();
-				addressBookFileIO.writeData(addressBookMap);
-				break;
-			case 8:
-				// System.out.println("Contact Details ");
-				AddressBookFileIO addressBookFileIO2 = new AddressBookFileIO();
-				System.out.println(addressBookFileIO2.readData());
-
-			case 9:
 				sc.close();// for closing the Scanner Class
 				return;
 			default:

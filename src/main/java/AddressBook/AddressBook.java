@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 
@@ -35,6 +34,7 @@ public class AddressBook
 				return false;
 		}
 		contactList.add(contact);
+		//adding key and value
 		nameHashMap.put(contact.getFirstName(), contact);
 		cityHashMap.put(contact.getCity(), contact);
 		stateHashMap.put(contact.getState(), contact);
@@ -108,7 +108,7 @@ public class AddressBook
 			return "No contacts found!";
 		String result = new String();
 		for (int i = 0; i < contactList.size(); i++) {
-			result += " " + contactList.get(i);
+			result += "\n" + contactList.get(i);
 		}
 		return result;
 	}
@@ -225,17 +225,17 @@ public class AddressBook
 		case 1:
 			System.out.print("Enter name: ");
 			String name = sc.nextLine();
-			contactList.forEach(book -> addressBook.searchByName(name).forEach(System.out::println));
+			contactList.forEach(book -> AddressBook.searchByName(name).forEach(System.out::println));
 			break;
 		case 2:
 			System.out.print("Enter city: ");
 			String city = sc.nextLine();
-			contactList.forEach(book -> addressBook.searchByCity(city).forEach(System.out::println));
+			contactList.forEach(book -> AddressBook.searchByCity(city).forEach(System.out::println));
 			break;
 		case 3:
 			System.out.print("Enter state: ");
 			String state = sc.nextLine();
-			contactList.forEach(book -> addressBook.searchByState(state).forEach(System.out::println));
+			contactList.forEach(book -> AddressBook.searchByState(state).forEach(System.out::println));
 			break;
 		case 4:
 			return;
@@ -308,6 +308,7 @@ public class AddressBook
 		sc.nextLine();
 		switch (choice) {
 		case 1:
+			//fetch all the details of user by taking firstName ::
 			addressBook.sortBy(Contacts::getFirstName).forEach(System.out::println);
 			break;
 		case 2:

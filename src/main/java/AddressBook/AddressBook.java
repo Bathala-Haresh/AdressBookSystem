@@ -1,8 +1,3 @@
-/**
- * @author Bathala Haresh
- * @since 30/07/2021
- * Purpose: Address Book System to take user details and add to adress book and do crud operations for person details
- */
 package AddressBook;
 
 import java.util.ArrayList;
@@ -15,8 +10,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 
-public class AddressBook
-{
+public class AddressBook {
 
 	public static final ArrayList<Contacts> contactList = new ArrayList<>();
 	public static Map<String, Contacts> nameHashMap = new HashMap<String, Contacts>();
@@ -25,16 +19,13 @@ public class AddressBook
 	static Scanner sc = new Scanner(System.in);
 	static AddressBook addressBook = new AddressBook();
 
-	//boolean method to check if already contact exists or not
-	public static boolean addContact(Contacts contact)
-	{
+	public static boolean addContact(Contacts contact) {
 		List<Contacts> checkByName = searchByName(contact.getFirstName());
 		for (Contacts equalName : checkByName) {
 			if (equalName.equals(contact))
 				return false;
 		}
 		contactList.add(contact);
-		//adding key and value
 		nameHashMap.put(contact.getFirstName(), contact);
 		cityHashMap.put(contact.getCity(), contact);
 		stateHashMap.put(contact.getState(), contact);
@@ -43,7 +34,7 @@ public class AddressBook
 
 	// method for search contact by name
 	public static List<Contacts> searchByName(String name) {// collection list of element
-		// stream and lambda to find filter given name from arraylist
+		// stream and lambda for find filter given name from arraylist
 		return contactList.stream().filter(person -> person.getFirstName().equalsIgnoreCase(name))
 				.collect(Collectors.toList());
 	}
@@ -108,14 +99,13 @@ public class AddressBook
 			return "No contacts found!";
 		String result = new String();
 		for (int i = 0; i < contactList.size(); i++) {
-			result += "\n" + contactList.get(i);
+			result += " " + contactList.get(i);
 		}
 		return result;
 	}
 
 	// method for adding details
 	public static Contacts readContact() {
-		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter First Name: ");
 		String firstName = sc.nextLine();
@@ -140,7 +130,6 @@ public class AddressBook
 
 	// method for show option for contacts
 	public void addressBookOptions(AddressBook addressBook) {
-		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		while (true) {
 			System.out.println("\n-------------------------- Address Book Contact Option --------------------------");
@@ -225,17 +214,17 @@ public class AddressBook
 		case 1:
 			System.out.print("Enter name: ");
 			String name = sc.nextLine();
-			contactList.forEach(book -> AddressBook.searchByName(name).forEach(System.out::println));
+			contactList.forEach(book -> addressBook.searchByName(name).forEach(System.out::println));
 			break;
 		case 2:
 			System.out.print("Enter city: ");
 			String city = sc.nextLine();
-			contactList.forEach(book -> AddressBook.searchByCity(city).forEach(System.out::println));
+			contactList.forEach(book -> addressBook.searchByCity(city).forEach(System.out::println));
 			break;
 		case 3:
 			System.out.print("Enter state: ");
 			String state = sc.nextLine();
-			contactList.forEach(book -> AddressBook.searchByState(state).forEach(System.out::println));
+			contactList.forEach(book -> addressBook.searchByState(state).forEach(System.out::println));
 			break;
 		case 4:
 			return;
@@ -269,7 +258,7 @@ public class AddressBook
 			System.out.println("INVALID CHOICE!");
 		}
 	}
-
+    //method to count the number of contacts by taking city or state as input
 	public static void countByOption() {
 		System.out.println("1. Count City ");
 		System.out.println("2. Count State");
@@ -308,7 +297,6 @@ public class AddressBook
 		sc.nextLine();
 		switch (choice) {
 		case 1:
-			//fetch all the details of user by taking firstName ::
 			addressBook.sortBy(Contacts::getFirstName).forEach(System.out::println);
 			break;
 		case 2:

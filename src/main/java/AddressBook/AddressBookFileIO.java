@@ -5,8 +5,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 public class AddressBookFileIO {
-	
-	public void writeData(Map<String, AddressBook> addressBook) {
+
+    public void writeData(Map<String, AddressBook> addressBook) {
         File file = new File("O:\\SpringBoot\\contacts.txt");
         BufferedWriter bf = null;;
         try {
@@ -32,7 +32,7 @@ public class AddressBookFileIO {
         Map<String, String> mapFileContents = new HashMap<>();
         BufferedReader br = null;
         try {
-           //create file object
+            //create file object
             File file = new File("O:\\SpringBoot\\contacts.txt");
 
             //create BufferedReader object from the File
@@ -45,22 +45,22 @@ public class AddressBookFileIO {
                 //split the line by :
                 String[] parts = line.split(":");
                 String bookName = parts[0].trim();
-                String fname = parts[1].trim();                
+                String fname = parts[1].trim();
 
                 mapFileContents.put(bookName, fname);
-                }
+            }
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                //Always close the BufferedReader
-                if (br != null) {
-                    try {
-                        br.close();
-                    } catch (Exception e) {
-                    }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //Always close the BufferedReader
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (Exception e) {
                 }
             }
+        }
         return mapFileContents;
     }
 }
